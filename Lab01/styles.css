@@ -1,0 +1,18 @@
+﻿body{
+    font-family: Arial;
+    background-color: white;
+    margin: 0;
+    width: 670px;
+    padding: 0 2em 1em;
+    border: 3px solid blue;
+}
+.header {
+    text-align: center;
+    color: blue;
+}
+#para1{
+    color: black;
+}
+a:hover{
+    color: red;
+}
