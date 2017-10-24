@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head><style></style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(fucntion(){
+            $("#signup").submit(
+            function (event) {
+                alert('validating form');
+                var isValid = true;
+                var namePattern = /[a-zA-Z]{3,}/;
+                if (document.getElementById("firstName").value == "") {
+                    document.getElementById("errorFirstName").innerHTML = "First Name" +
+                        "cannot be empty";
+                    isValid = false;
+                }
+                else if (!namePattern.test(document.getElementById("firstName").value)) {
+                    document.getElementById("errorFirstName").innerHTML = "First Name must" +
+                        "be 3 characters long";
+                    isValid = false;
+                }
+            });
+        //return isValid;
+            if (!isValid) {
+                event.preventDefault();
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+    <form action="https://www.w3schools.com/action_page_post.php" method="post">
+        <div class="formLayout">
+            <div id="divh1">Sign Up</div>
+            <div id="divh2" class="lineLayout">It's free.</div>
+            <div class="lineLayout">
+                <input type="text" id="firstName" name="firstName" placeholder="First name" class="smallinput" />&nbsp;&nbsp;
+                <input type="text" id="lastName" name="lastName" placeholder="Last name" class="smallinput" />
+            </div>
+            <div class="lineLayout">
+                <input type="text" id="emailAddress" name="emailAddress" placeholder="Email Address" class="biginput" />
+            </div>
+            <div class="lineLayout">
+                <input type="text" id="emailVerify" placeholder="Re-enter email" class="biginput" />
+            </div>
+            <div class="lineLayout">
+                <label for="birthdate">Birth Date</label><br />
+                <input type="date" id="birthdate" name="birthdate" placeholder="Birth Date" class="biginput" />
+            </div>
+            <div class="lineLayout">
+                <button type="submit" id="signup">Sign Up</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+
