@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+    h2 { border-top: solid thin; font-size: 14px; }
+    p {font-size: 30px; color: blue;position:relative;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+    // Problem 1 (add code for each problem below)
+    $("#btnSlideUp").click(function(){
+        $("p").slideUp();
+    });
+    $("#btnSlideDown").click(function(){
+        $("p").slideDown();
+
+    });// Problem 2
+	$("#btnFadeIn").click(function(){
+		$("p").fadeIn(400);
+	});
+	$("#btnFadeOut").click(function(){
+		$("p").fadeOut(2000);
+
+	});// Problem 3
+	$("#btnSideUpDown").click(function(){
+		$("p").slideUp(1000).slideDown(1000);
+		
+	});// Problem 4
+	$("#btnFadeOutIn").click(function(){
+		$("p").fadeOut(2000, function() {
+				$("p").fadeIn(400);
+			});
+	});/*The difference between chaining and callback functions is that chaining is that an event can be run or clicked
+		two or three times without interupting the cycle of events in queue; 
+		in callback, if the event is ran more than once before complete, the queue for the next event will start before 
+		the first event is complete, due to the cycle of the callback method for the first event.*/
+	
+	});// Problem 5
+	$("btnAnimate").click(function(){
+	     $("p").animate({ fontSize: "275%", left: "+=250"}, 2000);
+		//animation complete
+	});
+
+</script>
+</head>
+
+<body>
+<h1><b>IT 2320 - Lab 6</b><br>Alan M</h1>
+<!--Note that all effects and animations will apply to this paragraph!-->
+
+
+<p>This is a paragraph. Change me in each of the problems below.</p>
+
+<h2>1. Use the slideUp() and slideDown() methods to toggle the visibility of the 
+    paragraph element on the following page (4 points).
+    </h2>
+<button id="btnSlideUp">Slide up</button>
+<button id="btnSlideDown">Slide down</button>
+
+<h2>2. Modify code from question 1, so that it uses fadeIn() and fadeOut() respectively 
+    as opposed to slideUp() and slideDown().  Set the fadeOut() duration to 2 seconds.  
+    Set fadeIn() to 400 milliseconds (or leave its default) (4 points). </h2>
+<button id="btnFadeIn">Fade In</button>
+<button id="btnFadeOut">Fade Out</button>
+
+<h2>
+3. Use chaining to combine both animations from problem 1.  Set the durations to anything less than 3 seconds (4 points).
+ </h2>
+<button id="btnSideUpDown">Slide up then slide down</button>
+
+<h2>
+4.	Use a callback function to combine the two effects from problem 2. 
+Set the durations to anything less than 3 seconds (4 points).  
+Explain in a comment the difference between using chaining versus callback functions. </h2>
+<button id="btnFadeOutIn">Fade Out then fade in</button>
+
+<h2>
+5. Call the  animate() method with 1) a duration, 2) CSS properties, and 3) easing.  Use the following
+for documentation and examples. <br> 
+<a href="http://api.jquery.com/animate/" target="_blank">http://api.jquery.com/animate/</a><br>
+<a href="https://www.w3schools.com/jquery/jquery_animate.asp" target="_blank">https://www.w3schools.com/jquery/jquery_animate.asp</a>
+</h2>
+<button id="btnAnimate">Animate</button>
+
+</body>
+</html>
