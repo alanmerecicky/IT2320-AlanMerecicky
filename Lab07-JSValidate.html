@@ -1,54 +1,58 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-   
+	<link rel="stylesheet" href="Lab07.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-        <style></style>
-        function (validateForm() {
-            alert('validating form');
-            var isValid = true;
-            var namePattern = /[a-zA-Z]{3,}/;
-            if (document.getElementById("firstName").value == "") {
+	<script>
+		function validateForm() {
+			alert('validating form');
+			var checkBox = $("input[name='agree']:checked").value();
+			var isValid = true;
+			if  (!checkBox.test(document.getElementById("agree").value())) {
+				document.getElementById("errorCheckBox").innerHTML = "Check box cannot be empty";
+                isValid = false;
+			}
+			else {		
+				return isValid;
+			}
+			if (document.getElementById("firstName").value == "") {
                 document.getElementById("errorFirstName").innerHTML = "First Name" +
                     "cannot be empty";
                 isValid = false;
             }
-            else if (!namePattern.test(document.getElementById("firstName").value)) {
-                document.getElementById("errorFirstName").innerHTML = "First Name must" +
-                    "be 3 characters long";
-                isValid = false;
-            
-            }
-        return isValid;
-        }
-    });
-    </script>
+			else {
+				return isValid;
+			}
+		
+	}
+	</script>
+
 </head>
 <body>
-    <form action="https://www.w3schools.com/action_page_post.php" method="post" onsubmit="return validateForm()">
+    <form action="https://www.w3schools.com/action_page_post.php" 
+          method="post" onsubmit="return validateForm()">
         <div class="formLayout">
             <div id="divh1">Sign Up</div>
             <div id="divh2" class="lineLayout">It's free.</div>
             <div class="lineLayout">
-                <input type="text" id="firstName" name="firstName" required />&nbsp;&nbsp;
-                <input type="text" id="lastName" name="lastName" required />
+                <input type="text" id="firstName" name="firstName" placeholder="First name" class="smallinput" />&nbsp;&nbsp;
+                <input type="text" id="lastName" name="lastName" placeholder="Last name" class="smallinput" /> <span id="errorFirstName" class="error">&nbsp;</span>
             </div>
             <div class="lineLayout">
-                <input type="text" id="emailAddress" name="emailAddress" placeholder="Email Address" class="biginput" required />
+                <input type="text" id="emailAddress" name="emailAddress" placeholder="Email Address" class="biginput" />
             </div>
             <div class="lineLayout">
-                <input type="text" id="emailVerify" placeholder="Re-enter email" class="biginput" required />
-            </div>
-            <div class="lineLayout">
-                <input type="tel" id="phone" name="phone" required/>
+                <input type="text" id="emailVerify" placeholder="Re-enter email" class="biginput" />
             </div>
             <div class="lineLayout">
                 <label for="birthdate">Birth Date</label><br />
                 <input type="date" id="birthdate" name="birthdate" placeholder="Birth Date" class="biginput" />
             </div>
+			<div class="lineLayout">
+				<input type="checkbox" name="agree" value="Agree">Check this box to agree to nothing<br /> <span id="errorCheckBox" class="error">&nbsp;</span>           
+            </div>
             <div class="lineLayout">
-                <button type="submit">Sign Up</button>
+                <button type="submit" input type="submit" onsubmit="return validateForm()" method="post">Sign Up</button>
             </div>
         </div>
     </form>

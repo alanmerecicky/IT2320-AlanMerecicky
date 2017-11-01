@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA321D9C-E281-4D1C-A311-39763967D86D}"
+	ProjectSection(SolutionItems) = preProject
+		HLab07-jQueryPlugin.html = HLab07-jQueryPlugin.html
+		Lab07-HTMLValidate.html = Lab07-HTMLValidate.html
+		Lab07-jQueryValidate.html = Lab07-jQueryValidate.html
+		Lab07-JSValidate.html = Lab07-JSValidate.html
+		Lab07.css = Lab07.css
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {155A6EA9-98F6-4E7F-994C-B8287498818A}
+	EndGlobalSection
+EndGlobal

@@ -1,7 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
-<head><style>
-  #divh1 {
+<head>
+    <style>
+        #divh1 {
             color: #141823;
             font-family: 'Freight Sans Bold', 'lucida grande',tahoma,verdana,arial,sans-serif;
             font-size: 40px;
@@ -68,34 +69,32 @@
             position: relative;
             text-shadow: 0 1px 2px rgba(0,0,0,.5);
         }
-</style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            f
-            function (event) {
-                alert('validating form');
-                var isValid = true;
-                var namePattern = /[a-zA-Z]{3,}/;
-                if (document.getElementById("firstName").value == "") {
-                    document.getElementById("errorFirstName").innerHTML = "First Name" +
-                        "cannot be empty";
-                    isValid = false;
-                }
-                else if (!namePattern.test(document.getElementById("firstName").value)) {
-                    document.getElementById("errorFirstName").innerHTML = "First Name must" +
-                        "be 3 characters long";
-                    isValid = false;
-                }
-            });
-        //return isValid;
-            if (!isValid) {
-                event.preventDefault();
-            }
-        }
-    });
-    </script>
+    </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="jquery.validate.min.js"></script>
+	<script src="additional-methods.min.js"></script>
+	<script src="member.js"></script>
+	<script>
+	$(document).ready(function() {
+		$("#signup").submit()
+		$("#formLayout").validate({
+			rules: {
+				firstName: {
+					required: true
+				}
+				lastName: {
+					required: true
+				}
+				emailAddress: {
+					required: true
+				}
+			}
+		})
+
+	})
+	</script>
 </head>
+
 <body>
     <form action="https://www.w3schools.com/action_page_post.php" method="post">
         <div class="formLayout">
@@ -109,14 +108,17 @@
                 <input type="text" id="emailAddress" name="emailAddress" placeholder="Email Address" class="biginput" />
             </div>
             <div class="lineLayout">
-                <input type="text" id="emailVerify" placeholder="Re-enter email" class="biginput" />
+                <input type="text" id="emailAddress" name="emailAddress" placeholder="Email Address" class="biginput" />
+            </div>
+            <div class="lineLayout">
+                <input type="tel" id="phone" name="phone" placeholder="999-999-9999" />
             </div>
             <div class="lineLayout">
                 <label for="birthdate">Birth Date</label><br />
                 <input type="date" id="birthdate" name="birthdate" placeholder="Birth Date" class="biginput" />
             </div>
             <div class="lineLayout">
-                <button type="submit" id="signup">Sign Up</button>
+                <button type="submit">Sign Up</button>
             </div>
         </div>
     </form>
