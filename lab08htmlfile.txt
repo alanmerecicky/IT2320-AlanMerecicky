@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Calculate Receipt</title>
+    <style>
+        * {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        }
+
+        main {
+            float: left;
+        }
+
+        section {
+            float: left;
+            padding-left: 40px;
+        }
+
+        #receiptItems {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #receiptItems td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #receiptItems tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #receiptItems tr:hover {
+                background-color: #ddd;
+            }
+
+            #receiptItems th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        var subtotal = 0.00;
+        $(document).ready(function () {
+            // 1. When the page is loaded, focus on the item input box 
+            $("#item").focus(function () {
+                $(this).css("background-color", "#cccccc");
+            });
+            $("#item").blur(function () {
+                $(this).css("background-color", "#ffffff");
+            });          
+            // 2. For each item added, display the following 
+            // - Note that Total is calculated using Quantity * Cost 
+            // - Format output as currency 
+            // - Display the next item in the table (hint: add to end of table or after last row)
+            $("#addItem").click(function () {
+                var newItem = "";
+               
+                newItem += "<tr><td>" + $("#item").val() + "</td>";
+                newItem += "<td>" + "$" + $("#itemCost").val() + "</td>";
+                newItem += "<td>" + $("#quantity").val() + "</td>";
+                newItem += "<td>" + $("#itemCost").val() * $("#quantity").val() + "</td>"
+                $("#receiptItems").after(newItem);
+                $("#item;").val();
+                $("#itemCost").val();
+                $("#quantity").val();
+                $("#itemCost").val() * $("#quantity").val();
+
+                // 3. Display a total amount (hint: use the subtotal variable to keep track of the total amount 
+                //by adding the cost to the subtotal each time) 
+                newItem += "<h4 id='#subtotal'>" + "Subtotal (before tax):" + $("#itemCost").val() * $("#quantity").val() + "</h4>"
+                $("#subtotal").append(newItem);
+                $("#itemCost").val() * $("#quantity").val();
+
+                
+                
+                // 4. Display tip calculations for 15%, 18% and 20% 
+                // Hint: use .html() to set formatting 
+                var tips = "";
+                tips += $("#itemCost").val() * $("#quantity").val() * .15;
+                tips += $("#itemCost").val() * $("#quantity").val() * .18;
+                tips += $("#itemCost").val() * $("#quantity").val() * .20;
+                $("#tips").after(tips);
+                
+                var total = "";
+                total += tips;
+                $("#total").after(total);
+                // 5. When you add an item, clear the input boxes              
+                $("#item").clear();
+                $("#itemCost").clear();
+                $("#quantity").clear();
+            });   
+       });
+    </script>
+</head >
+<body>
+        <main id="calculateReceipt">
+            <section>
+                <h2>Add New Item</h2>
+                <label for="item">Item</label><br />
+                <input type="text" name="item" id="item" /><br /><br />
+                <label for="itemCost">Cost</label><br />
+                <input type="text" name="itemCost" id="itemCost" /><br /><br />
+                <label for="quantity">Quantity</label><br />
+                <input type="text" name="quantity" id="quantity" /><br /><br />
+                <input type="button" id="addItem" value="Add Item" />
+            </section>
+            <section id="receipt">
+                <h2>Receipt</h2>
+                <table id="receiptItems">
+                    <tr>
+                        <td>Item Name</td>
+                        <td>Cost</td>
+                        <td>Quantity</td>
+                        <td>Total</td>
+                    </tr>
+                </table>
+                <!-- Details of the receipt go here -->
+                <h4 id="subtotal">Subtotal (before tax): </h4>
+                <h4 id="tax">Tax: </h4>
+                <h4 id="total"></h4>
+                <span id="tips">
+                    <b>Example Tips:</b>
+                    15%: $3.00,
+                    18%: $3.23,
+                    20%: $4.04
+                </span>
+            </section>
+        </main>
+    </body>
+</html>
